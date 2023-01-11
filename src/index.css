@@ -6,3 +6,18 @@
   list-style-type: none;
   font-family: 'Poppins', sans-serif;
 }
+
+body{
+  max-height: 100vh;
+  overflow-y: scroll;
+  text-decoration: none;
+}
+a{
+  text-decoration: none;
+  background-color: none;
+}
+
+.active{
+  color: brown;
+}
+
