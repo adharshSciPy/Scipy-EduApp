@@ -11,14 +11,13 @@ import { DataGrid } from '@mui/x-data-grid';
 import Modal from '@mui/material/Modal';
 import { useNavigate } from 'react-router-dom';
 
-
 function Batches() {
 
   const navigate = useNavigate()
 
   const breadcrumbs = [
     { label: 'Home', to: '/admin/home' },
-    { label: 'Batches' },
+    { label: 'Student' },
   ];
 
 
@@ -74,21 +73,21 @@ function Batches() {
       renderCell: (params) => {
         const onClick = (e) => {
           e.stopPropagation(); // don't select this row after clicking
-
+  
           const api: GridApi = params.api;
           const thisRow: Record<string, GridCellValue> = {};
-
+  
           api
             .getAllColumns()
             .filter((c) => c.field !== '__check__' && !!c)
             .forEach(
               (c) => (thisRow[c.field] = params.getValue(params.id, c.field)),
             );
-
+  
           console.log(JSON.stringify(thisRow, null, 4));
           navigate('sfd')
         };
-
+  
         return <Button variant='outlined' onClick={onClick} size="small" >More</Button>;
       },
     },
@@ -123,10 +122,10 @@ function Batches() {
             alignItems="center"
             spacing={2}>
             <Typography variant="h4" color="initial">
-              Batches
+              Students
             </Typography>
 
-            <Button variant='outlined' color='primary' onClick={handleOpen}>Create Batch</Button>
+            {/* <Button variant='outlined' color='primary' onClick={handleOpen}></Button> */}
           </Stack>
 
           {/* data grid table for batches */}

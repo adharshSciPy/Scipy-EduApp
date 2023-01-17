@@ -7,9 +7,13 @@ import Batch from './scenes/admin/Batch';
 import Batches from './scenes/admin/Batches'
 import Student from './scenes/admin/Student';
 import Teacher from './scenes/admin/Teacher';
+import Teachers from './scenes/admin/Teachers';
+import Students from './scenes/admin/Students';
 import Home from './scenes/admin/Home';
 import StudentHome from './scenes/student/Home';
 import TeacherHome from './scenes/teacher/Home';
+import TeacherBatch from './scenes/teacher/Batches';
+
 
 export const router = createBrowserRouter([
     {
@@ -45,12 +49,20 @@ export const router = createBrowserRouter([
                     },
                     {
                         path: '/admin/students',
+                        element: <Students />
+                    },
+                    {
+                        path: '/admin/students/:studentId',
                         element: <Student />
                     },
                     {
                         path: '/admin/teachers',
-                        element: <Teacher />
-                    }
+                        element: <Teachers />
+                    },
+                    {
+                        path: '/admin/teachers/:teacherId',
+                        element: <Student />
+                    },
                 ]
             },
             {
@@ -60,6 +72,10 @@ export const router = createBrowserRouter([
             {
                 path: 'teacher',
                 element: <TeacherHome />
+            },
+            {
+                path: 'teacher/batches',
+                element: <TeacherBatch/>
             }
         ]
     },

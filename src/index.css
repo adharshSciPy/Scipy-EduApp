@@ -1,23 +1,31 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
   list-style-type: none;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-body{
-  max-height: 100vh;
+body {
   overflow-y: scroll;
   text-decoration: none;
 }
-a{
+a {
   text-decoration: none;
   background-color: none;
 }
 
-.active{
+.active {
   color: brown;
+  background-color: #1976d222;
 }
 
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(171, 171, 204);
+  border-radius: 1rem;
+}
