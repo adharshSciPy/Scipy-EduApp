@@ -113,10 +113,10 @@ function Dashboard() {
     setOpen(false);
   };
 
-  
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  
+
   const handleLogout = () => {
     handleMenuClose()
     dispatch(logout())
@@ -248,8 +248,8 @@ function Dashboard() {
   ]
 
   const styles = theme => ({
-    listItemText:{
-      fontSize:'0.7em',//Insert your required size
+    listItemText: {
+      fontSize: '0.7em',//Insert your required size
     }
   });
 
@@ -282,7 +282,7 @@ function Dashboard() {
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
 
 
-              <IconButton size="large" edge="start"  aria-label="show 4 new mails" color="inherit">
+              <IconButton size="large" edge="start" aria-label="show 4 new mails" color="inherit">
                 <Badge badgeContent={4} color="error">
                   <MailIcon />
                 </Badge>
@@ -293,7 +293,7 @@ function Dashboard() {
                 edge="start"
                 aria-label="show 17 new notifications"
                 color="inherit"
-                sx={{mr: 3}}
+                sx={{ mr: 3 }}
               >
                 <Badge badgeContent={17} color="error">
                   <NotificationsIcon />
@@ -339,7 +339,7 @@ function Dashboard() {
             </IconButton>
           </DrawerHeader>
           <Divider />
-          <List  size="sm" style={{fontSize: '12px'}}>
+          <List size="sm" style={{ fontSize: '12px' }}>
 
             {
               sidebarData.map((index) => (

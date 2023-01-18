@@ -6,10 +6,13 @@ import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import { Box, Container } from '@mui/system';
 import Typography from '@mui/material/Typography'
-import { Button, Grid, TextField } from '@mui/material';
+import { Button, Grid, InputLabel, TextField } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import Modal from '@mui/material/Modal';
 import { useNavigate } from 'react-router-dom';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 
 function Batches() {
@@ -46,6 +49,12 @@ function Batches() {
     setOpen(false);
   };
 
+  const [teacher, setTeacher] = React.useState('');
+
+  const handleChange = (event) => {
+    setTeacher(event.target.value);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -58,15 +67,13 @@ function Batches() {
 
   // mock data
   const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'firstName', headerName: 'First name', width: 200 },
-    { field: 'lastName', headerName: 'Last name', width: 200 },
-    {
-      field: 'age',
-      headerName: 'Age',
-      type: 'number',
-      width: 90,
-    },
+    { field: 'id', headerName: 'Batch-ID', width: 120 },
+    { field: 'batch', headerName: 'Batch name', width: 150 },
+    { field: 'courseName', headerName: 'Course name', width: 200 },
+    { field: 'duration', headerName: 'Duration', width: 150 },
+    { field: 'noStudents', headerName: 'Students', width: 80 },
+    { field: 'teacher', headerName: 'Assigned Teacher', width: 200 },
+
     {
       field: 'action',
       headerName: 'Action',
@@ -95,16 +102,19 @@ function Batches() {
   ];
 
   const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: 'Eros', age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+    { id: '01A1', courseName: 'Python', batch: 'Batch 1', noStudents: 15, duration: '90 hours', teacher: 'John Doe' },
+    { id: '01A2', courseName: 'Mern Stack', batch: 'Batch 2', noStudents: 20, duration: '120 hours', teacher: 'Elizabeth' },
+    { id: '01A3', courseName: 'Python', batch: 'Batch 3', noStudents: 30, duration: '120 hours', teacher: 'John Doe' },
+    { id: '01A4', courseName: 'Mern Stack', batch: 'Batch 4', noStudents: 16, duration: '90 hours', teacher: 'David' },
   ];
+
+  const placeholderStyle = {
+    '& .MuiFormLabel-root': {
+      fontSize: '14px',
+    }
+  }
+
+
 
   return (
     <div>
@@ -165,48 +175,64 @@ function Batches() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
-                  name="firstName"
+                  name="batchName"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="batchName"
+                  label="Batch Name"
                   autoFocus
                   size='small'
+                  sx={placeholderStyle}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
+                  id="batchId"
+                  label="Batch Id"
+                  name="batchId"
                   size='small'
+                  sx={placeholderStyle}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
+                  id="courseName"
+                  label="Course Name"
+                  name="courseName"
                   size='small'
+                  sx={placeholderStyle}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
+                  name="duration"
+                  label="Course Duration"
+                  id="duration"
                   size='small'
+                  sx={placeholderStyle}
                 />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControl size="small" sx={{minWidth: '100%'}}>
+                  <InputLabel id="demo-select-small"  sx={{fontSize: '14px'}}>Assign Teacher</InputLabel>
+                  <Select
+                    labelId="demo-select-small"
+                    id="demo-select-small"
+                    value={teacher}
+                    label="Assign Teacher"
+                    onChange={handleChange}
+                  >
+                    <MenuItem value="John Doe">John Doe</MenuItem>
+                    <MenuItem value="David">David</MenuItem>
+                    <MenuItem value="Elizabeth">Elizabeth</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
             </Grid>
           </Box>

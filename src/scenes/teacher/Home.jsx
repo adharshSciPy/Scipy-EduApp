@@ -75,24 +75,24 @@ function Home() {
               batches.map((index) => {
                 return (
                   <Grid item >
-                    <div style={{boxShadow: "rgba(0, 0, 0, 0.35), 0px 5px 15px"}}>
-                    <Box sx={{ minWidth: 230, minHeight: 180, p: 2, boxShadow: "rgba(0, 0, 0, 0.35), 0px 5px 15px" }}>
-                      <Stack direction="row" justifyContent="flex-end" spacing={2} sx={{ mb: 1 }}>
-                        <Typography variant="body2" color="primary">Batch Id : {index.id}</Typography>
-                      </Stack>
-                      <Stack direction="column" justifyContent="center" spacing={2}>
-                        <div style={{ backgroundColor: '#1976d222' }}> <Typography variant="h4" color="secondary">{index.course}</Typography></div>
-                        <Typography variant="body2" color="initial">Active Students: {index.students}</Typography>
-                        <Button variant='outlined' size='small' onClick={() => navigate('/teacher/batches')}>Enter</Button>
-                      </Stack>
-                    </Box>
-                  </div>
+                    <div style={{ boxShadow: "rgba(0, 0, 0, 0.35), 0px 5px 15px" }}>
+                      <Box sx={{ minWidth: 230, minHeight: 180, p: 2, boxShadow: "rgba(0, 0, 0, 0.35), 0px 5px 15px" }}>
+                        <Stack direction="row" justifyContent="flex-end" spacing={2} sx={{ mb: 1 }}>
+                          <Typography variant="body2" color="primary">Batch Id : {index.id}</Typography>
+                        </Stack>
+                        <Stack direction="column" justifyContent="center" spacing={2}>
+                          <div style={{ backgroundColor: '#1976d222' }}> <Typography variant="h4" color="secondary">{index.course}</Typography></div>
+                          <Typography variant="body2" color="initial">Active Students: {index.students}</Typography>
+                          <Button variant='outlined' size='small' onClick={() => navigate('/teacher/batches')}>Enter</Button>
+                        </Stack>
+                      </Box>
+                    </div>
                   </Grid>
-          )
+                )
               })
             }
-        </Grid>
-    </Box>
+          </Grid>
+        </Box>
       </Container >
     </Box >
   )
