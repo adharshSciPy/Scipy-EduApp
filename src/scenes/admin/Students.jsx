@@ -73,21 +73,21 @@ function Batches() {
       renderCell: (params) => {
         const onClick = (e) => {
           e.stopPropagation(); // don't select this row after clicking
-  
+
           const api: GridApi = params.api;
           const thisRow: Record<string, GridCellValue> = {};
-  
+
           api
             .getAllColumns()
             .filter((c) => c.field !== '__check__' && !!c)
             .forEach(
               (c) => (thisRow[c.field] = params.getValue(params.id, c.field)),
             );
-  
+
           console.log(JSON.stringify(thisRow, null, 4));
           navigate('sfd')
         };
-  
+
         return <Button variant='outlined' onClick={onClick} size="small" >More</Button>;
       },
     },

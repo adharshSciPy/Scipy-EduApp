@@ -33,11 +33,11 @@ function Class() {
                container
                spacing={3}
                direction="row-reverse"
-               sx={{width: '95vw'}}
+               sx={{ width: '95vw' }}
             >
 
                <Grid item xs={12}>
-                  <Box sx={{ borderBottom: `1px solid lightgrey`, pb: 1, mt: 2 }}>
+                  <Box sx={{ borderBottom: `1px solid lightgrey`, pb: 1, mt: 1 }}>
                      <Typography variant="h5" color="secondary">Artificial Intellegence Python</Typography>
                      <Stack direction="row" justifyContent="space-between" sx={{ maxWidth: '23rem' }}>
                         <Typography variant='caption' color="secondary">Batch Id: 01PY01</Typography>
@@ -49,13 +49,16 @@ function Class() {
 
 
                <Grid container item xs={12} sm={6} md={8}>
-                  <Card sx={{ height: '100%', width: '100%', pt: 3, boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}>
-                     <ScheduleTable />
+                  <Card sx={{ height: '100%', width: '100%', pt: 3, boxShadow: "rgba(0, 0, 0, 0.12) 0px 3px 12px" }}>
+                     <Container>
+                        <Typography variant="h6" color="secondary">Tutorials</Typography>
+                        <ScheduleTable />
+                     </Container>
                   </Card>
                </Grid>
 
                <Grid item xs={12} sm={6} md={4}>
-                  <Card sx={{ p: 3, boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}>
+                  <Card sx={{ p: 3, boxShadow: "rgba(0, 0, 0, 0.12) 0px 3px 12px" }}>
                      {
                         classSchduled ?
                            <>
