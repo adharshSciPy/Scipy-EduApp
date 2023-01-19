@@ -93,7 +93,7 @@ function DrawerAppBar(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" sx={{ p: 3 }}>
+      <Box component="main" sx={{ p: 2.5 }}>
         <Toolbar />
       </Box>
     </Box>

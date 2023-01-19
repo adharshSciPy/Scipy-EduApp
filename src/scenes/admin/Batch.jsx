@@ -215,9 +215,7 @@ function Batch() {
                 />
               </Box>
             </>
-
             :
-
             <>
               <Box sx={{ flexGrow: 1, mt: 2, height: 400, width: '100%' }}>
                 <Stack direction="row" justifyContent="space-between">
@@ -231,11 +229,6 @@ function Batch() {
               </Box>
             </>
         }
-
-
-
-
-
       </Container>
     </>
   )

@@ -1,6 +1,7 @@
 import React from 'react'
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import { Link } from 'react-router-dom';
+import { Container } from '@mui/material';
 
 
 
@@ -17,6 +18,10 @@ function Home() {
           </Link>
         ))}
       </Breadcrumbs>
+
+      <Container>
+        hello
+      </Container>
     </div>
   )
 }

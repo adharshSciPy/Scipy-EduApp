@@ -1,6 +1,6 @@
 import { Box, Container, Stack } from '@mui/system'
 import * as React from 'react';
-import NavBar from '../../components/NavBar'
+import NavBar from './NavBar'
 import Typography from '@mui/material/Typography'
 import { Breadcrumbs, Button } from '@mui/material'
 import { Link } from 'react-router-dom'

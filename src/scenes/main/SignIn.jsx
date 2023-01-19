@@ -18,7 +18,7 @@ import { setUser, setRole, setStudent, setPublic, setAdmin } from '../../store/a
 import { MenuItem } from '@mui/material';
 
 export default function SignIn() {
-  
+
   const theme = createTheme();
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -39,11 +39,10 @@ export default function SignIn() {
     // switching routers
     switch (data.get('roles')) {
       case 'student':
-        navigate('/student')
+        navigate('/student/home')
         dispatch(setUser(true))
         dispatch(setStudent())
         console.log(role)
-
         break;
 
 
@@ -55,12 +54,12 @@ export default function SignIn() {
 
 
       case 'admin':
-        navigate('/admin')
+        navigate('/admin/home')
         dispatch(setUser(true))
         dispatch(setAdmin())
         break;
 
-        default : alert('Enter role')
+      default: alert('Enter role')
     }
   };
 

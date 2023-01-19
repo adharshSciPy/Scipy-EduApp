@@ -13,6 +13,8 @@ import Home from './scenes/admin/Home';
 import StudentHome from './scenes/student/Home';
 import TeacherHome from './scenes/teacher/Home';
 import TeacherBatch from './scenes/teacher/Batches';
+import StudentClass from './scenes/student/Class'
+import StudentNav from './scenes/student/Navbar'
 
 
 export const router = createBrowserRouter([
@@ -67,8 +69,18 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'student',
-                element: <StudentHome />
-            },
+                element: <StudentNav />,
+                children: [
+                    {
+                        path: '/student/home',
+                        element: <StudentHome />
+                    },
+                    {
+                        path: '/student/class',
+                        element: <StudentClass />
+                    }
+                ]
+            },  
             {
                 path: 'teacher',
                 element: <TeacherHome />

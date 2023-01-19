@@ -1,6 +1,6 @@
 import { Box } from '@mui/system'
 import React from 'react'
-import Navbar from '../../components/NavBar'
+import Navbar from './NavBar'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import { Button, Card, CardActions, CardContent, CardMedia, Grid, Paper, Stack } from '@mui/material'
