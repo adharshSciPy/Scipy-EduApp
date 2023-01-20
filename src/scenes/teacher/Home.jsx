@@ -54,7 +54,7 @@ function Home() {
     <Box>
       <Navbar />
       <Container>
-        <div style={{ marginTop: '-2rem', marginBottom: '1.5rem' }}>
+        <div style={{ marginTop: '-2rem', marginBottom: '.3rem' }}>
           <Breadcrumbs separator="›" aria-label="breadcrumb">
             {breadcrumbs.map((breadcrumb, index) => (
               <Link color="inherit" to={breadcrumb.to} key={index} underline="hover">
@@ -63,7 +63,7 @@ function Home() {
             ))}
           </Breadcrumbs>
         </div>
-        <Typography variant="h4" color="initial">
+        <Typography variant="h4" color="secondary">
           My Batches
         </Typography>
 
@@ -75,25 +75,23 @@ function Home() {
               batches.map((index) => {
                 return (
                   <Grid item >
-                    <div style={{ boxShadow: "rgba(0, 0, 0, 0.35), 0px 5px 15px" }}>
-                      <Box sx={{ minWidth: 230, minHeight: 180, p: 2, boxShadow: "rgba(0, 0, 0, 0.35), 0px 5px 15px" }}>
-                        <Stack direction="row" justifyContent="flex-end" spacing={2} sx={{ mb: 1 }}>
-                          <Typography variant="body2" color="primary">Batch Id : {index.id}</Typography>
-                        </Stack>
-                        <Stack direction="column" justifyContent="center" spacing={2}>
-                          <div style={{ backgroundColor: '#1976d222' }}> <Typography variant="h4" color="secondary">{index.course}</Typography></div>
-                          <Typography variant="body2" color="initial">Active Students: {index.students}</Typography>
-                          <Button variant='outlined' size='small' onClick={() => navigate('/teacher/batches')}>Enter</Button>
-                        </Stack>
-                      </Box>
-                    </div>
+                    <Box sx={{ minWidth: 230, minHeight: 180, p: 2, boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px' }}>
+                      <Stack direction="row" justifyContent="flex-end" spacing={2} sx={{ mb: 1 }}>
+                        <Typography variant="body2" color="primary">Batch Id : {index.id}</Typography>
+                      </Stack>
+                      <Stack direction="column" justifyContent="center" spacing={2}>
+                        <div style={{ backgroundColor: '#1976d222' }}> <Typography variant="h4" color="secondary">{index.course}</Typography></div>
+                        <Typography variant="body2" color="initial">Active Students: {index.students}</Typography>
+                        <Button variant='outlined' size='small' onClick={() => navigate('/teacher/batches')}>Enter</Button>
+                      </Stack>
+                    </Box>
                   </Grid>
                 )
               })
             }
           </Grid>
         </Box>
-      </Container >
+      </Container>
     </Box >
   )
 }
