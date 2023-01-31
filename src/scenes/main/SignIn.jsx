@@ -1,4 +1,5 @@
-import * as React from 'react';
+import axios from "axios";
+import React, { useState } from "react";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,52 +17,77 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setUser, setRole, setStudent, setPublic, setAdmin } from '../../store/auth';
 import { MenuItem } from '@mui/material';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SignIn() {
 
   const theme = createTheme();
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [form, setForm] = useState({});
+  const [errors, setErrors] = useState({});
+
+
   const role = useSelector((state) => state.auth.role)
 
 
 
   // submit function
-  const HandleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-      roles: data.get('roles')
+  const onChangeHandler = (event) => {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value,
     });
+  };
+
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    axios
+      .post("http://localhost:5000/user/signin", form)
+      .then((response) => {
+        const token = response.data.token;
+        // Save token to localStorage
+        localStorage.setItem("user-token", JSON.stringify(token));
+        toast.success(`${response.data.message}`, {
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+        console.log(response);
+        setTimeout(() => {
+          window.location.reload(false);
+          navigate("/student/home");
+        }, 1000);
+      })
+      .catch((err) => setErrors(err.response.data));
+
+    }
 
     // switching routers
-    switch (data.get('roles')) {
-      case 'student':
-        navigate('/student/home')
-        dispatch(setUser(true))
-        dispatch(setStudent())
-        console.log(role)
-        break;
+    // switch (data.get('roles')) {
+    //   case 'student':
+    //     navigate('/student/home')
+    //     dispatch(setUser(true))
+    //     dispatch(setStudent())
+    //     console.log(role)
+    //     break;
 
 
-      case 'teacher':
-        navigate('/teacher')
-        dispatch(setUser(true))
-        dispatch(setPublic())
-        break;
+    //   case 'teacher':
+    //     navigate('/teacher')
+    //     dispatch(setUser(true))
+    //     dispatch(setPublic())
+    //     break;
 
 
-      case 'admin':
-        navigate('/admin/home')
-        dispatch(setUser(true))
-        dispatch(setAdmin())
-        break;
+    //   case 'admin':
+    //     navigate('/admin/home')
+    //     dispatch(setUser(true))
+    //     dispatch(setAdmin())
+    //     break;
 
-      default: alert('Enter role')
-    }
-  };
+    //   default: alert('Enter role')
+    // }
+
 
 
   return (
@@ -82,7 +108,7 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={HandleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={onSubmitHandler} noValidate sx={{ mt: 1 }}>
 
 
             <TextField
@@ -94,6 +120,7 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={onChangeHandler}
             />
             <TextField
               margin="normal"
@@ -104,9 +131,10 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={onChangeHandler}
             />
 
-            <TextField
+            {/* <TextField
               variant="outlined"
               select
               label="Role"
@@ -116,7 +144,7 @@ export default function SignIn() {
               <MenuItem value='student'>Student</MenuItem>
               <MenuItem value='teacher'>Teacher</MenuItem>
               <MenuItem value='admin'>admin</MenuItem>
-            </TextField>
+            </TextField> */}
 
 
             <Button
