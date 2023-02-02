@@ -15,15 +15,16 @@ import TeacherHome from './scenes/teacher/Home';
 import TeacherBatch from './scenes/teacher/Batches';
 import StudentClass from './scenes/student/Class'
 import StudentNav from './scenes/student/Navbar'
+import LandingPage from './scenes/main/LandingPage';
 
 
 export const router = createBrowserRouter([
     {
-        // element: <App />,
+        element: <App />,
         children: [
             {
                 path: '/',
-                element: <App />
+                element: <LandingPage />
             },
             {
                 path: '/register',

@@ -26,13 +26,14 @@ module.exports = {
             res.status(404).json(errors); 
           } else {
             const hashedpassword = bcrypt.hashSync(password, 8);
-            await User.create({
+            const result = await User.create({
               firstName,
               lastName,
               email,
               password: hashedpassword,
+              role:"student"
             });
-            res.status(201).json({ message: "user added with success" });
+            res.status(201).json({ message: "user added with success"});
           }
         });
       }
@@ -79,6 +80,7 @@ module.exports = {
             // res.cookie("Authorization", token, options);
             res.status(201).json({
               token,
+              role : user.role
             });
           }
         });

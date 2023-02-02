@@ -30,7 +30,6 @@ export default function SignUp() {
       ...form,
       [event.target.name]: event.target.value,
     });
-    console.log(form);
   };
 
 

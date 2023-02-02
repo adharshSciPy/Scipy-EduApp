@@ -47,6 +47,7 @@ export default function SignIn() {
       .post("http://localhost:5000/user/signin", form)
       .then((response) => {
         const token = response.data.token;
+        const role = response.data.role
         // Save token to localStorage
         localStorage.setItem("user-token", JSON.stringify(token));
         toast.success(`${response.data.message}`, {
@@ -55,7 +56,7 @@ export default function SignIn() {
         console.log(response);
         setTimeout(() => {
           window.location.reload(false);
-          navigate("/student/home");
+          navigate("/admin/home");
         }, 1000);
       })
       .catch((err) => setErrors(err.response.data));
