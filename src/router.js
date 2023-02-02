@@ -15,7 +15,13 @@ import TeacherHome from './scenes/teacher/Home';
 import TeacherBatch from './scenes/teacher/Batches';
 import StudentClass from './scenes/student/Class'
 import StudentNav from './scenes/student/Navbar'
+<<<<<<< .mine
 import LandingPage from './scenes/main/LandingPage';
+
+=======
+import StudentProfile from './scenes/student/Profile'
+import AdvancedClass from './scenes/student/AdvancedClass'
+>>>>>>> .theirs
 
 
 export const router = createBrowserRouter([
@@ -79,6 +85,14 @@ export const router = createBrowserRouter([
                     {
                         path: '/student/class',
                         element: <StudentClass />
+                    },
+                    {
+                        path: '/student/profile',
+                        element: <StudentProfile/>
+                    },
+                    {
+                        path: '/student/advancedClass',
+                        element: <AdvancedClass />
                     }
                 ]
             },  

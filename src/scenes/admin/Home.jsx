@@ -18,19 +18,19 @@ function Home() {
     {
       title: 'Batches',
       no: '10',
-      img: {batchImg},
+      img: batchImg,
       link: '/admin/batches'
     },
     {
       title: 'Teachers',
       no: '3',
-      img: {teacherImg},
+      img: teacherImg,
       link: '/admin/teachers'
     },
     {
       title: 'Students',
       no: '60',
-      img: {studentImg},
+      img: studentImg,
       link: '/admin/students'
     }
   ]
@@ -38,6 +38,7 @@ function Home() {
   const navigate = useNavigate()
   return (
     <div style={{ marginTop: '10px' }}>
+
       {/* <Breadcrumbs separator="›" aria-label="breadcrumb">
         {breadcrumbs.map((breadcrumb, index) => (
           <Link color="inherit" to={breadcrumb.to} key={index} underline="hover">
